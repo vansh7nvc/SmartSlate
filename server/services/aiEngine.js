@@ -9,7 +9,7 @@ const fileManager = new GoogleAIFileManager(process.env.GEMINI_API_KEY);
 const processMeetingFile = async (meeting) => {
   try {
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash",
+      model: "gemini-2.0-flash",
       generationConfig: { 
         responseMimeType: "application/json",
         temperature: 0.2
@@ -153,7 +153,7 @@ const processMeetingFile = async (meeting) => {
 const askAILesson = async (meeting, query) => {
   try {
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash",
+      model: "gemini-2.0-flash",
       generationConfig: { temperature: 0.7 } 
     });
     const context = `Context: This is a lesson/meeting titled "${meeting.title}".
