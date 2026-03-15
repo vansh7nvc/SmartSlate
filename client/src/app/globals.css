@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e5e5e5;
+  --foreground: #1e293b;
+  --paper: #fdfcf8;
+  --accent-blue: #0f4c81;
+  --accent-red: #b91c1c;
+  --accent-green: #166534;
+}
+
+body {
+  color: #1e293b;
+  background: #e5e5e5;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(#d1d1d1 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.notebook-paper {
+  background-color: var(--paper);
+  background-image: 
+    linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+    linear-gradient(#e2e8f0 0.1em, transparent 0.1em);
+  background-size: 100% 1.5em;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.hand-drawn-border {
+  border: 2px solid #2d2d2d;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.journal-card {
+  border: 2px solid #1e293b;
+  box-shadow: 4px 4px 0px 0px rgba(30,41,59,1);
+  border-radius: 4px;
+}
+
+/* 3D Study Card Effects */
+.perspective {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+/* Custom Scrollbar for Chat */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.tape-effect {
+  background: rgba(220, 210, 180, 0.5);
+  backdrop-filter: blur(1px);
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+}
+
+.torn-tab {
+  clip-path: polygon(0% 0%, 100% 0%, 95% 50%, 100% 100%, 0% 100%, 5% 50%);
+  background: white;
+  border: 1px solid #e2e8f0;
+}
+
+.sticky-note {
+  background: #fff385;
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.1);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.ink-blue { color: var(--accent-blue); }
+.ink-red { color: var(--accent-red); }
+.ink-green { color: var(--accent-green); }
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
