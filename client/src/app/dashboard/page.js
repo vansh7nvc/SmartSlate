@@ -10,7 +10,8 @@ export default function Dashboard() {
 
   const fetchMeetings = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/meetings');
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/meetings`);
       const data = await res.json();
       setMeetings(data);
     } catch (err) {
@@ -35,7 +36,7 @@ export default function Dashboard() {
       <header className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-12 border-b-2 border-dashed border-slate-300 pb-8">
         <div>
           <h2 className="text-4xl font-black text-slate-900 tracking-tight">My Library</h2>
-          <p className="text-slate-600 mt-2 font-medium italic">"Every session, safely saved on the shelf."</p>
+          <p className="text-slate-600 mt-2 font-medium italic">&quot;Every session, safely saved on the shelf.&quot;</p>
         </div>
         <div className="flex items-center gap-6 w-full lg:w-auto">
           <div className="relative w-full lg:w-80 group">
@@ -58,7 +59,7 @@ export default function Dashboard() {
       )}
 
       <footer className="mt-20 border-t border-slate-200 pt-8 text-center opacity-40 italic text-xs">
-        <p>"The ink is permanent, the insights are timeless."</p>
+        <p>&quot;The ink is permanent, the insights are timeless.&quot;</p>
       </footer>
     </main>
   );

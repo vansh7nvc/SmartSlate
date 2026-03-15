@@ -25,7 +25,8 @@ export default function UploadForm() {
     formData.append('title', title || file.name);
 
     try {
-      const res = await fetch('http://localhost:5000/api/meetings/upload', {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/meetings/upload`, {
         method: 'POST',
         body: formData,
       });

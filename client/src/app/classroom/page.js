@@ -9,7 +9,7 @@ export default function Classroom() {
       <header className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-12 border-b-2 border-dashed border-slate-300 pb-8 relative">
         <div className="relative">
           <h2 className="text-4xl font-black text-slate-900 tracking-tight">Classroom Notes</h2>
-          <p className="text-slate-600 mt-2 font-medium italic">"Keep your notes clean and your mind sharp."</p>
+          <p className="text-slate-600 mt-2 font-medium italic">&quot;Keep your notes clean and your mind sharp.&quot;</p>
           {/* Rubber Stamp Effect */}
           <div className="absolute -top-6 -right-12 rotate-12 border-4 border-red-600/30 text-red-600/30 font-black text-sm px-3 py-1 uppercase rounded-sm border-double pointer-events-none hidden lg:block">
             Graded A+
@@ -77,7 +77,7 @@ export default function Classroom() {
           <div className="p-8 border-2 border-dashed border-slate-300 rounded-lg bg-white/40 relative rotate-1">
             <span className="material-symbols-outlined absolute -top-4 -left-4 text-3xl text-slate-400 rotate-[-15deg]">brush</span>
             <p className="text-sm font-bold text-slate-700 italic leading-relaxed">
-              "Iteration is the father of perfection. Every sync is a step closer to the vision."
+              &quot;Iteration is the father of perfection. Every sync is a step closer to the vision.&quot;
             </p>
             <p className="text-[10px] uppercase font-black text-slate-400 mt-4 tracking-tighter">— Thought of the Day</p>
           </div>
@@ -150,7 +150,7 @@ export default function Classroom() {
       </section>
 
       <footer className="mt-8 text-center opacity-40 italic text-xs">
-        <p>"The advancement of intelligence depends on the rigor of its documentation."</p>
+        <p>&quot;The advancement of intelligence depends on the rigor of its documentation.&quot;</p>
       </footer>
     </main>
   );

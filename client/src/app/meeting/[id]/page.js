@@ -20,7 +20,9 @@ export default function MeetingPage() {
   const fetchMeeting = async () => {
     if (!id || id === ':id') return;
     try {
-      const res = await fetch(`http://localhost:5000/api/meetings/${id}`);
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const normalizedId = typeof id === 'object' ? id.id : id;
+      const res = await fetch(`${apiUrl}/api/meetings/${normalizedId}`);
       if (!res.ok) throw new Error('Meeting not found');
       const data = await res.json();
       setMeeting(data);
@@ -33,7 +35,8 @@ export default function MeetingPage() {
     if (!id || id === ':id') return;
     setProcessing(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/meetings/${id}/process`, { method: 'POST' });
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/meetings/${id}/process`, { method: 'POST' });
       
       if (!res.ok) {
         const errorText = await res.text();
@@ -89,7 +92,8 @@ export default function MeetingPage() {
     const normalizedId = typeof id === 'object' ? id.id : id;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/meetings/${normalizedId}/chat`, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/meetings/${normalizedId}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ query: currentQuery })
@@ -176,7 +180,7 @@ export default function MeetingPage() {
             <div className="flex flex-col items-center justify-center py-20 text-center">
               <span className="material-symbols-outlined text-6xl text-slate-200 mb-4 italic">draw</span>
               <h3 className="text-xl font-black text-slate-800 italic">This lesson has no notes yet.</h3>
-              <p className="text-sm text-slate-400 mt-2">Click "Explain This" above to start the lesson.</p>
+              <p className="text-sm text-slate-400 mt-2">Click &quot;Explain This&quot; above to start the lesson.</p>
             </div>
           )}
 
@@ -236,7 +240,7 @@ export default function MeetingPage() {
 
               {/* Glossary */}
               <section className="bg-slate-50/50 p-8 rounded-lg border-2 border-dashed border-slate-200">
-                <h3 className="text-xl font-black text-slate-900 mb-6 italic">Teacher's Glossary</h3>
+                <h3 className="text-xl font-black text-slate-900 mb-6 italic">Teacher&apos;s Glossary</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {meeting.glossary?.map((item, i) => (
                     <div key={i}>
@@ -279,7 +283,7 @@ export default function MeetingPage() {
             <div className="flex-1 overflow-y-auto p-4 space-y-6">
               {chatHistory.length === 0 && (
                 <div className="text-center py-20 opacity-30 italic text-xs font-bold px-4">
-                  "Confused about a topic? Ask me anything about this session."
+                  &quot;Confused about a topic? Ask me anything about this session.&quot;
                 </div>
               )}
               {chatHistory.map((msg, i) => (
@@ -321,7 +325,7 @@ export default function MeetingPage() {
       </div>
 
       <footer className="mt-12 text-center opacity-30 text-[10px] font-bold uppercase tracking-widest">
-        End of Entry #{id.slice(-4)}
+        End of Entry #{id ? (typeof id === 'string' ? id.slice(-4) : id.id?.slice(-4)) : '...'}
       </footer>
     </main>
   );

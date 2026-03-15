@@ -15,7 +15,8 @@ export default function MeetingsTable({ meetings, refresh }) {
   const deleteMeeting = async (e, id) => {
     e.preventDefault();
     if (!confirm('Shred this entry?')) return;
-    await fetch(`http://localhost:5000/api/meetings/${id}`, { method: 'DELETE' });
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
+    await fetch(`${apiUrl}/api/meetings/${id}`, { method: 'DELETE' });
     refresh();
   };
 
