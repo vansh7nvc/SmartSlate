@@ -1,6 +1,6 @@
-# InsightSync MVP
+# SmartSlate
 
-**InsightSync** is an AI-driven meeting intelligence platform that converts raw audio and documents into structured, searchable intelligence.
+**SmartSlate** is an AI-driven meeting intelligence platform that converts raw audio and documents into structured, searchable intelligence.
 
 ## 🚀 Vision
 Eliminate "meeting amnesia" with an automated pipeline: **Upload → Transcribe → Summarize → Display.**
