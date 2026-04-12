@@ -9,7 +9,7 @@ Eliminate "meeting amnesia" with an automated pipeline: **Upload → Transcribe 
 - **Frontend**: Next.js (App Router), Tailwind CSS
 - **Backend**: Node.js, Express
 - **Database**: MongoDB (Mongoose)
-- **AI Engine**: Google Gemini 1.5 Flash (Transcription & Summarization)
+- **AI Engine**: Google Gemini 2.5 Flash (Transcription & Summarization)
 
 ## 📦 Features
 - **Unified Upload Portal**: Support for `MP3`, `WAV`, and `PDF` files.
