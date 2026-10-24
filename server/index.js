@@ -11,6 +11,18 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors());
+// Security mitigation against Node2Shell (CVE-2026-111497 Brotli RCE/DoS)
+// Rejects unauthenticated requests sending Brotli-compressed request bodies to unpatched decompressors
+app.use((req, res, next) => {
+  const encoding = req.headers['content-encoding'];
+  if (encoding && typeof encoding === 'string' && encoding.toLowerCase().includes('br')) {
+    return res.status(415).json({
+      error: 'Unsupported Media Type: Brotli request body compression is disabled for security mitigation (CVE-2026-111497).'
+    });
+  }
+  next();
+});
+
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
